@@ -8,7 +8,7 @@ user.say_goodbye
 id = user.id
 puts id
 
-name=user.name;puts name
+    name = user.name;puts name
 
 if name == "John"
       puts "My name is John"

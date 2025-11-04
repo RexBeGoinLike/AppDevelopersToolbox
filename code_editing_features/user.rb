@@ -1,34 +1,53 @@
-# frozen_string_literal: true
 class User
+  attr_accessor :id, :name, :email
 
-  attr_accessor :id, :name
-
-  def initialize(id, name)
+  def initialize(id, name, email = nil)
     @id = id
     @name = name
+    @email = email
   end
 
   def say_hello
-    puts "Hello there!"
+    puts "Hello there! I'm #{@name}"
   end
 
   def say_goodbye
-    puts "Goodbye!"
+    puts "Goodbye from #{@name}!"
   end
 
-  def first_user
-    if id == 1
-      puts "This user is the first user"
-    else
-      puts "This user is not the first user"
-    end
+  def to_s
+    "User ##{@id}: #{@name}"
   end
-
 end
 
 class Student < User
-  def initialize(year)
+  attr_accessor :year, :major
+
+  def initialize(id, name, year, major = "Undeclared")
+    super(id, name)
     @year = year
+    @major = major
   end
 
+  def student_info
+    "#{@name} - Year: #{@year}, Major: #{@major}"
+  end
+
+  def say_hello
+    puts "Hello! I'm #{@name}, a #{@year} year student studying #{@major}"
+  end
+end
+
+class Teacher < User
+  attr_accessor :subject, :department
+
+  def initialize(id, name, subject, department = "General")
+    super(id, name)
+    @subject = subject
+    @department = department
+  end
+
+  def teach
+    puts "#{@name} is teaching #{@subject}"
+  end
 end
