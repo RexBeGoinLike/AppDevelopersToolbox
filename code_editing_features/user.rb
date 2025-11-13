@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User
   attr_accessor :id, :name, :email
 
@@ -23,7 +25,7 @@ end
 class Student < User
   attr_accessor :year, :major
 
-  def initialize(id, name, year, major = "Undeclared")
+  def initialize(id, name, year,  major)
     super(id, name)
     @year = year
     @major = major
@@ -35,19 +37,5 @@ class Student < User
 
   def say_hello
     puts "Hello! I'm #{@name}, a #{@year} year student studying #{@major}"
-  end
-end
-
-class Teacher < User
-  attr_accessor :subject, :department
-
-  def initialize(id, name, subject, department = "General")
-    super(id, name)
-    @subject = subject
-    @department = department
-  end
-
-  def teach
-    puts "#{@name} is teaching #{@subject}"
   end
 end

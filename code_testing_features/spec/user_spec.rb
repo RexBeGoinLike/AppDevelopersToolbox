@@ -1,23 +1,18 @@
-# frozen_string_literal: true
-# spec/models/user_spec.rb
-require 'rspec/autorun'
+require_relative '../../code_editing_features/user.rb'
 
 describe User do
-  describe '#valid_email?' do
-    it 'returns true for valid email' do
-      user = User.new('John', 'john@example.com')
-      expect(user.valid_email?).to be true
+  describe "#initialize" do
+    it "creates a user with id and name" do
+      user = User.new(1, "Inqre D' Gussi")
+      expect(user.id).to eq(1)
+      expect(user.name).to eq("Inqre D' Gussi")
     end
+  end
 
-    it 'returns false for invalid email' do
-      user = User.new('John', 'invalid-email')
-      expect(user.valid_email?).to be false
+  describe "#say_hello" do
+    it "prints greeting with user's name" do
+      user = User.new(2, "Jaymark")
+      expect {user.say_hello}.to output("Hello there! I'm Jaymark\n").to_stdout
     end
   end
 end
-
-
-
-
-
-
